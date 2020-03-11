@@ -42,11 +42,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseRepository.cs" />
-    <Compile Include="Class1.cs" />
+    <Compile Include="ClassificationRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DB\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HTKTennisklub.Entities\HTKTennisklub.Entities.csproj">
+      <Project>{8331D191-F777-4199-ACB0-7230BE5E93C6}</Project>
+      <Name>HTKTennisklub.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
