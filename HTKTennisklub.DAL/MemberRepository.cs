@@ -26,7 +26,7 @@ namespace HTKTennisklub.DAL
         /// Updates the specified Member in the database.
         /// </summary>
         /// <param name="member">The member to be updated in the database</param>
-        public void UpdateMember(Member member) => ExecuteNonQuery($"UPDATE Members SET FirstName='{member.FirstName}', LastName='{member.LastName}', Address='{member.Address}', PhoneNumber='{member.PhoneNumber}', Email='{member.Email}', Gender={member.Gender}, LevelId={member.Level.Id} WHERE Id={member.Id}");
+        public void UpdateMember(Member member) => ExecuteNonQuery($"UPDATE Members SET FirstName='{member.FirstName}', LastName='{member.LastName}', Address='{member.Address}', PhoneNumber='{member.PhoneNumber}', Email='{member.Email}' WHERE Id={member.Id}");
 
         /// <summary>
         /// Sets IsMember of the specified Member to 0 (false) in the database.
