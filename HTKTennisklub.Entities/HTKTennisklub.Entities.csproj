@@ -47,6 +47,7 @@
     <Compile Include="CourtClosing.cs" />
     <Compile Include="Gender.cs" />
     <Compile Include="Level.cs" />
+    <Compile Include="Member.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
