@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="AgeGroup.cs" />
     <Compile Include="Classification.cs" />
+    <Compile Include="Court.cs" />
     <Compile Include="Level.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
