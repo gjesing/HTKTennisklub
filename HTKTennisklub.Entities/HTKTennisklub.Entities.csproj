@@ -45,6 +45,7 @@
     <Compile Include="Classification.cs" />
     <Compile Include="Court.cs" />
     <Compile Include="CourtClosing.cs" />
+    <Compile Include="Gender.cs" />
     <Compile Include="Level.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
