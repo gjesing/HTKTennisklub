@@ -14,7 +14,7 @@ namespace HTKTennisklub.DAL
         /// Retrieves all Members from the database.
         /// </summary>
         /// <returns>A List of all Members</returns>
-        public List<Member> GetMembers() => HandleData(ExecuteQuery($"SELECT * FROM Members JOIN AgeGroups ON AgeGroups.Id = Members.AgeGroupId JOIN Levels ON Levels.Id = Members.LevelId"));
+        public List<Member> GetMembers() => HandleData(ExecuteQuery($"SELECT * FROM Members JOIN AgeGroups ON AgeGroups.Id = Members.AgeGroupId JOIN Levels ON Levels.Id = Members.LevelId WHERE IsMember=1"));
 
         /// <summary>
         /// Inserts Member into database.
@@ -32,7 +32,7 @@ namespace HTKTennisklub.DAL
         /// Sets IsMember of the specified Member to 0 (false) in the database.
         /// </summary>
         /// <param name="member">The member to be made inactive</param>
-        public void MakeMemberInactive(Member member) => ExecuteNonQuery($"UPDATE Members SET IsMember={member.IsMember} WHERE Id={member.Id}");
+        public void MakeMemberInactive(Member member) => ExecuteNonQuery($"UPDATE Members SET IsMember=0 WHERE Id={member.Id}");
 
         /// <summary>
         /// Helper method used to convert DataTable to list of Members.
@@ -47,35 +47,37 @@ namespace HTKTennisklub.DAL
             {
                 Member member = new Member()
                 {
-                    Id = (int)row["Members.Id"],
+                    Id = (int)row["Id"],
                     FirstName = (string)row["FirstName"],
                     LastName = (string)row["LastName"],
                     Address = (string)row["Address"],
                     PhoneNumber = (string)row["PhoneNumber"],
                     Email = (string)row["Email"],
-                    BirthDate = (DateTime)row["DateTime"],
-                    Gender = (Gender)row["Gender"],
+                    BirthDate = (DateTime)row["BirthDate"],
+                    Gender = (Gender)(Convert.ToString(row["Gender"]).ToCharArray()[0]),
                     AgeGroup = new AgeGroup()
                     {
-                        Id = (int)row["AgeGroups.Id"],
-                        Name = (string)row["AgeGroups.Name"]
+                        Id = (int)row["Id1"],
+                        Name = (string)row["Name"]
                     },
+                    Classifications = new ClassificationRepository().GetClassifications((int)row["Id"]),
                     Level = new Level()
                     {
-                        Id = (int)row["Levels.Id"],
-                        Name = (string)row["Levels.Name"],
-                        BasePoints = (int)row["BasePoints"]
+                        Id = (int)row["Id2"],
+                        Name = (string)row["Name1"],
+                        BasePoints = (byte)row["BasePoints"]
                     },
                     IsMember = Convert.ToBoolean(row["IsMember"])
                 };
                 if (row["MinAge"] != DBNull.Value)
                 {
-                    member.AgeGroup.MinAge = (int)row["MinAge"];
+                    member.AgeGroup.MinAge = (byte)row["MinAge"];
                 }
                 if (row["MaxAge"] != DBNull.Value)
                 {
-                    member.AgeGroup.MaxAge = (int)row["MaxAge"];
+                    member.AgeGroup.MaxAge = (byte)row["MaxAge"];
                 }
+                members.Add(member);
             });
             return members;
         }

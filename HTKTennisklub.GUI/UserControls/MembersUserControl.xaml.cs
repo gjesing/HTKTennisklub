@@ -32,7 +32,7 @@ namespace HTKTennisklub.GUI.UserControls
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
             Member member = (Member)memberList.SelectedItem;
-            new Window { Title = "Rediger medlem", Content = new UpdateMemberUserControl(member), Height = 350, Width = 250 }.ShowDialog();
+            new Window { Title = "Rediger medlem", Content = new UpdateMemberUserControl(member), Height = 350, Width = 250, WindowStartupLocation = WindowStartupLocation.CenterScreen }.ShowDialog();
             members = new MemberRepository().GetMembers();
             memberList.ItemsSource = members;
         }

@@ -34,8 +34,6 @@ namespace HTKTennisklub.GUI.UserControls
             email.Text = member.Email;
         }
 
-        private void CloseWindow() => Application.Current.Windows[1].Close();
-
         private void Update_Click(object sender, RoutedEventArgs e)
         {
             Member.FirstName = firstName.Text;
@@ -43,11 +41,11 @@ namespace HTKTennisklub.GUI.UserControls
             Member.Address = address.Text;
             Member.PhoneNumber = phoneNumber.Text;
             Member.Email = email.Text;
-                new MemberRepository().UpdateMember(Member);
-                MessageBox.Show($"Opdateret");
-                CloseWindow();
+            new MemberRepository().UpdateMember(Member);
+            MessageBox.Show($"Opdateret");
+            Window.GetWindow(this).Close();
         }
 
-        private void Cancel_Click(object sender, RoutedEventArgs e) => CloseWindow();
+        private void Cancel_Click(object sender, RoutedEventArgs e) => Window.GetWindow(this).Close();
     }
 }

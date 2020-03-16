@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HTKTennisklub.Extensions;
 
 namespace HTKTennisklub.Entities
 {
@@ -16,6 +17,7 @@ namespace HTKTennisklub.Entities
         public string Email { get; set; }
         public DateTime BirthDate { get; set; }
         public Gender Gender { get; set; }
+        public string GenderDescription { get => Gender.GetDescription(); }
         public AgeGroup AgeGroup { get; set; }
         public List<Classification> Classifications { get; set; }
         public Level Level { get; set; }

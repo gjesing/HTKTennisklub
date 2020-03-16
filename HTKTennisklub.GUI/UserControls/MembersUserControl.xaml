@@ -68,12 +68,13 @@
                 </Style>
             </DataGrid.Resources>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Navn" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Fornavn" Binding="{Binding FirstName}"/>
+                <DataGridTextColumn Header="Efternavn" Binding="{Binding LastName}"/>
                 <DataGridTextColumn Header="Adresse" Binding="{Binding Address}"/>
                 <DataGridTextColumn Header="Telefon" Binding="{Binding PhoneNumber}"/>
                 <DataGridTextColumn Header="E-mail" Binding="{Binding Email}"/>
                 <DataGridTextColumn Header="Fødselsdato" Binding="{Binding BirthDate}"/>
-                <DataGridTextColumn Header="Køn" Binding="{Binding Gender}"/>
+                <DataGridTextColumn Header="Køn" Binding="{Binding GenderDescription}"/>
                 <DataGridTemplateColumn Width="Auto">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
