@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HTKTennisklub.GUI.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="450">
     <StackPanel>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -27,15 +27,15 @@
                 </Style>
             </Grid.Resources>
             <Label Margin="10">Fornavn:</Label>
-            <TextBox x:Name="firstName" Grid.Column="1" Text="{Binding Member.FirstName, ElementName=window}"/>
+            <TextBox x:Name="firstName" Grid.Column="1"/>
             <Label Grid.Row="1" Margin="10">Efternavn:</Label>
-            <TextBox x:Name="lastName" Grid.Column="1" Grid.Row="1" Text="{Binding Member.LasstName, ElementName=window}"/>
+            <TextBox x:Name="lastName" Grid.Column="1" Grid.Row="1"/>
             <Label Grid.Row="2" Margin="10">Adresse:</Label>
-            <TextBox x:Name="address" Grid.Column="1" Grid.Row="2" Text="{Binding Member.Address, ElementName=window}"/>
+            <TextBox x:Name="address" Grid.Column="1" Grid.Row="2"/>
             <Label Grid.Row="3" Margin="10">Telefon:</Label>
-            <TextBox x:Name="phoneNumber" Grid.Column="1" Grid.Row="3" Text="{Binding Member.PhoneNumber, ElementName=window}"/>
+            <TextBox x:Name="phoneNumber" Grid.Column="1" Grid.Row="3"/>
             <Label Grid.Row="4" Margin="10">E-mail:</Label>
-            <TextBox x:Name="email" Grid.Column="1" Grid.Row="4" Text="{Binding Member.Email, ElementName=window}"/>
+            <TextBox x:Name="email" Grid.Column="1" Grid.Row="4"/>
         </Grid>
         <Grid Margin="10,15,10,10">
             <Grid.ColumnDefinitions>
@@ -46,7 +46,6 @@
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Margin" Value="10"/>
                     <Setter Property="Padding" Value="15,5"/>
-                    <Setter Property="HorizontalAlignment" Value="Center"/>
                 </Style>
             </Grid.Resources>
             <Button Click="Update_Click">Opdater</Button>

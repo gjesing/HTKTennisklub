@@ -31,8 +31,7 @@ namespace HTKTennisklub.GUI.UserControls
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
-            Member member = (Member)memberList.SelectedItem;
-            new Window { Title = "Rediger medlem", Content = new UpdateMemberUserControl(member), Height = 350, Width = 250, WindowStartupLocation = WindowStartupLocation.CenterScreen }.ShowDialog();
+            new Window { Title = "Rediger medlem", Content = new UpdateMemberUserControl((Member)memberList.SelectedItem), Width = 350, SizeToContent = SizeToContent.Height, WindowStartupLocation = WindowStartupLocation.CenterScreen }.ShowDialog();
             members = new MemberRepository().GetMembers();
             memberList.ItemsSource = members;
         }
@@ -40,13 +39,13 @@ namespace HTKTennisklub.GUI.UserControls
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
             Member member = (Member)memberList.SelectedItem;
-            MessageBoxResult result = MessageBox.Show($"Fjern medlem \"{member.FirstName} {member.LastName}\"?", "", MessageBoxButton.OKCancel);
+            MessageBoxResult result = MessageBox.Show($"Slet medlem \"{member.FirstName} {member.LastName}\"?", "Slet medlem", MessageBoxButton.OKCancel);
             switch (result)
             {
                 case MessageBoxResult.OK:
                     MemberRepository memberRepository = new MemberRepository();
                     memberRepository.MakeMemberInactive(member);
-                    MessageBox.Show($"{member.FirstName} {member.LastName} er fjernet fra medlemslisten");
+                    MessageBox.Show($"{member.FirstName} {member.LastName} er fjernet fra medlemslisten.");
                     members = memberRepository.GetMembers();
                     memberList.ItemsSource = members;
                     break;
@@ -55,6 +54,13 @@ namespace HTKTennisklub.GUI.UserControls
                 default:
                     break;
             }
+        }
+
+        private void Create_Click(object sender, RoutedEventArgs e)
+        {
+            new Window { Title = "Opret medlem", Content = new CreateMemberUserControl(), Width = 350, SizeToContent = SizeToContent.Height, WindowStartupLocation = WindowStartupLocation.CenterScreen }.ShowDialog();
+            members = new MemberRepository().GetMembers();
+            memberList.ItemsSource = members;
         }
     }
 }

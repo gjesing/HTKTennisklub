@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:HTKTennisklub.GUI"
         xmlns:uc="clr-namespace:HTKTennisklub.GUI.UserControls"
         mc:Ignorable="d"
-        Title="Tennisklubben HTK" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+        Title="Tennisklubben HTK" Height="600" SizeToContent="Width" FontSize="14" WindowStartupLocation="CenterScreen">
     <TabControl>
         <TabItem Header="Medlemmer">
             <uc:MembersUserControl/>

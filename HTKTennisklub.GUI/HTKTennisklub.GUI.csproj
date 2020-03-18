@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="UserControls\CreateMemberUserControl.xaml.cs">
+      <DependentUpon>CreateMemberUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\MembersUserControl.xaml.cs">
       <DependentUpon>MembersUserControl.xaml</DependentUpon>
     </Compile>
@@ -73,6 +76,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UserControls\CreateMemberUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\MembersUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -116,6 +123,10 @@
     <ProjectReference Include="..\HTKTennisklub.Entities\HTKTennisklub.Entities.csproj">
       <Project>{8331D191-F777-4199-ACB0-7230BE5E93C6}</Project>
       <Name>HTKTennisklub.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HTKTennisklub.Extensions\HTKTennisklub.Extensions.csproj">
+      <Project>{C599FD2C-D492-412B-8D44-F28D0F18A9D4}</Project>
+      <Name>HTKTennisklub.Extensions</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -14,13 +14,17 @@ namespace HTKTennisklub.DAL
         /// Retrieves all Members from the database.
         /// </summary>
         /// <returns>A List of all Members</returns>
-        public List<Member> GetMembers() => HandleData(ExecuteQuery($"SELECT * FROM Members JOIN AgeGroups ON AgeGroups.Id = Members.AgeGroupId JOIN Levels ON Levels.Id = Members.LevelId WHERE IsMember=1"));
+        public List<Member> GetMembers() => HandleData(ExecuteQuery($"SELECT * FROM Members JOIN AgeGroups ON AgeGroups.Id = Members.AgeGroupId JOIN Levels ON Levels.Id = Members.LevelId WHERE IsMember=1 ORDER BY FirstName"));
 
         /// <summary>
         /// Inserts Member into database.
         /// </summary>
         /// <param name="member">The member to be inserted into the database</param>
-        public void InsertMember(Member member) => ExecuteNonQuery($"INSERT INTO Members VALUES ('{member.FirstName}', '{member.LastName}', '{member.Address}', '{member.PhoneNumber}', '{member.Email}', {member.BirthDate}, {member.Gender}, {member.AgeGroup.Id}, {member.Level.Id}, 1)");
+        public void InsertMember(Member member)
+        {
+            string gender = Convert.ToString((char)member.Gender);
+            ExecuteNonQuery($"INSERT INTO Members VALUES ('{member.FirstName}', '{member.LastName}', '{member.Address}', '{member.PhoneNumber}', '{member.Email}', {member.BirthDate}, {gender}, {member.AgeGroup.Id}, {member.Level.Id}, 1)");
+        } 
 
         /// <summary>
         /// Updates the specified Member in the database.

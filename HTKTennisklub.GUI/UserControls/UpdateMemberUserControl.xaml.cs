@@ -42,7 +42,7 @@ namespace HTKTennisklub.GUI.UserControls
             Member.PhoneNumber = phoneNumber.Text;
             Member.Email = email.Text;
             new MemberRepository().UpdateMember(Member);
-            MessageBox.Show($"Opdateret");
+            MessageBox.Show($"Oplysningerne for {Member.FirstName} {Member.LastName} er opdateret.", "Opdateret");
             Window.GetWindow(this).Close();
         }
 

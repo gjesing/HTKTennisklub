@@ -41,8 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgeGroupRepository.cs" />
     <Compile Include="BaseRepository.cs" />
     <Compile Include="ClassificationRepository.cs" />
+    <Compile Include="LevelRepository.cs" />
     <Compile Include="MemberRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
