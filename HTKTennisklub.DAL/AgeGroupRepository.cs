@@ -27,13 +27,20 @@ namespace HTKTennisklub.DAL
             if (dataTable is null) return ageGroups;
             dataTable.Rows.Cast<DataRow>().ToList().ForEach(row =>
             {
-                ageGroups.Add(new AgeGroup()
+                AgeGroup ageGroup = new AgeGroup()
                 {
                     Id = (int)row["Id"],
-                    Name = (string)row["Name"],
-                    MinAge = (byte)row["MinAge"],
-                    MaxAge = (byte)row["MaxAge"]
-                });
+                    Name = (string)row["Name"]
+                };
+                if (row["MinAge"] != DBNull.Value)
+                {
+                    ageGroup.MinAge = (byte)row["MinAge"];
+                }
+                if (row["MaxAge"] != DBNull.Value)
+                {
+                    ageGroup.MaxAge = (byte)row["MaxAge"];
+                }
+                ageGroups.Add(ageGroup);
             });
             return ageGroups;
         }

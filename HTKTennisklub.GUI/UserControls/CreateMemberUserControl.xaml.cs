@@ -27,6 +27,11 @@ namespace HTKTennisklub.GUI.UserControls
         {
             InitializeComponent();
 
+            //for (int i = DateTime.Now.Year; i > DateTime.Now.Year - 120; i--)
+            //{
+            //    birthYear.Items.Add(i);
+            //}
+
             Gender[] genders = (Gender[])Enum.GetValues(typeof(Gender)).Cast<Gender>();
             string[] genderDescriptions = new string[genders.Length];
             for (int i = 0; i < genders.Length; i++)

@@ -38,6 +38,7 @@
                         <Setter Property="Margin" Value="10"/>
                         <Setter Property="Padding" Value="5"/>
                         <Setter Property="VerticalAlignment" Value="Center"/>
+                        <Setter Property="MaxDropDownHeight" Value="100"/>
                     </Style>
                 </Grid.Resources>
                 <Label Margin="10">Fornavn:</Label>
@@ -52,6 +53,11 @@
                 <TextBox x:Name="email" Grid.Column="1" Grid.Row="4" Text="{Binding Member.Email, ElementName=window}"/>
                 <Label Grid.Row="5" Margin="10">Fødselsdato:</Label>
                 <DatePicker x:Name="birthDate" Grid.Column="1" Grid.Row="5"/>
+                <!--<StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="5">
+                    <ComboBox x:Name="birthDay"/>
+                    <ComboBox x:Name="birthMonth"/>
+                    <ComboBox x:Name="birthYear"/>
+                </StackPanel>-->
                 <Label Grid.Row="6" Margin="10">Køn:</Label>
                 <ComboBox x:Name="gender" Grid.Column="1" Grid.Row="6"/>
                 <Label Grid.Row="7" Margin="10">Level:</Label>
@@ -68,7 +74,7 @@
                         <Setter Property="Padding" Value="15,5"/>
                     </Style>
                 </Grid.Resources>
-                <Button Click="Create_Click">Opdater</Button>
+                <Button Click="Create_Click">Opret</Button>
                 <Button Grid.Column="1" Click="Cancel_Click">Annuller</Button>
             </Grid>
         </StackPanel>

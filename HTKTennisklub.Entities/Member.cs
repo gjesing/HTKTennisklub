@@ -22,5 +22,11 @@ namespace HTKTennisklub.Entities
         public List<Classification> Classifications { get; set; }
         public Level Level { get; set; }
         public bool IsMember { get; set; }
+
+        /// <summary>
+        /// Gets the age of the Member
+        /// </summary>
+        /// <returns>The age of the member in years</returns>
+        public int GetAge() => (int)((DateTime.Now - BirthDate).TotalDays / 365.25);
     }
 }

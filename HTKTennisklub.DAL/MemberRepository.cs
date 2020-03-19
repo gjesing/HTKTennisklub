@@ -23,7 +23,8 @@ namespace HTKTennisklub.DAL
         public void InsertMember(Member member)
         {
             string gender = Convert.ToString((char)member.Gender);
-            ExecuteNonQuery($"INSERT INTO Members VALUES ('{member.FirstName}', '{member.LastName}', '{member.Address}', '{member.PhoneNumber}', '{member.Email}', {member.BirthDate}, {gender}, {member.AgeGroup.Id}, {member.Level.Id}, 1)");
+            SetAgeGroup(member);
+            ExecuteNonQuery($"INSERT INTO Members (FirstName, LastName, Address, PhoneNumber, Email, BirthDate, Gender, AgeGroupId, LevelId) VALUES ('{member.FirstName}', '{member.LastName}', '{member.Address}', '{member.PhoneNumber}', '{member.Email}', '{member.BirthDate.Year}-{member.BirthDate.Month}-{member.BirthDate.Day}', '{gender}', {member.AgeGroup.Id}, {member.Level.Id})");
         } 
 
         /// <summary>
@@ -84,6 +85,29 @@ namespace HTKTennisklub.DAL
                 members.Add(member);
             });
             return members;
+        }
+
+        /// <summary>
+        /// Sets the AgeGroup of a Member
+        /// </summary>
+        /// <param name="member">The member of which the AgeGroup is set</param>
+        private void SetAgeGroup(Member member)
+        {
+            int age = member.GetAge();
+            List<AgeGroup> ageGroups = new AgeGroupRepository().GetAgeGroups();
+            foreach (AgeGroup ageGroup in ageGroups)
+            {
+                if (ageGroup.MaxAge != null && age <= ageGroup.MaxAge)
+                {
+                    member.AgeGroup = ageGroup;
+                    break;
+                }
+
+                else if (ageGroup.MaxAge is null)
+                {
+                    member.AgeGroup = ageGroup;
+                }
+            }
         }
     }
 }
