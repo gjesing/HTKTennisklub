@@ -29,16 +29,11 @@
                         <Setter Property="Padding" Value="5"/>
                         <Setter Property="VerticalAlignment" Value="Center"/>
                     </Style>
-                    <Style TargetType="{x:Type DatePicker}">
-                        <Setter Property="Margin" Value="10"/>
-                        <Setter Property="Padding" Value="5"/>
-                        <Setter Property="VerticalAlignment" Value="Center"/>
-                    </Style>
                     <Style TargetType="{x:Type ComboBox}">
                         <Setter Property="Margin" Value="10"/>
                         <Setter Property="Padding" Value="5"/>
                         <Setter Property="VerticalAlignment" Value="Center"/>
-                        <Setter Property="MaxDropDownHeight" Value="100"/>
+                        <Setter Property="MaxDropDownHeight" Value="105"/>
                     </Style>
                 </Grid.Resources>
                 <Label Margin="10">Fornavn:</Label>
@@ -52,12 +47,17 @@
                 <Label Grid.Row="4" Margin="10">E-mail:</Label>
                 <TextBox x:Name="email" Grid.Column="1" Grid.Row="4" Text="{Binding Member.Email, ElementName=window}"/>
                 <Label Grid.Row="5" Margin="10">Fødselsdato:</Label>
-                <DatePicker x:Name="birthDate" Grid.Column="1" Grid.Row="5"/>
-                <!--<StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="5">
-                    <ComboBox x:Name="birthDay"/>
-                    <ComboBox x:Name="birthMonth"/>
-                    <ComboBox x:Name="birthYear"/>
-                </StackPanel>-->
+                <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="5">
+                    <ComboBox x:Name="birthDay">
+                        <ComboBoxItem IsSelected="True" Visibility="Collapsed">Dag</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="birthMonth">
+                        <ComboBoxItem IsSelected="True" Visibility="Collapsed">Måned</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="birthYear">
+                        <ComboBoxItem IsSelected="True" Visibility="Collapsed">År</ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
                 <Label Grid.Row="6" Margin="10">Køn:</Label>
                 <ComboBox x:Name="gender" Grid.Column="1" Grid.Row="6"/>
                 <Label Grid.Row="7" Margin="10">Level:</Label>

@@ -27,10 +27,20 @@ namespace HTKTennisklub.GUI.UserControls
         {
             InitializeComponent();
 
-            //for (int i = DateTime.Now.Year; i > DateTime.Now.Year - 120; i--)
-            //{
-            //    birthYear.Items.Add(i);
-            //}
+            for (int i = 31; i >= 1; i--)
+            {
+                birthDay.Items.Add(i);
+            }
+
+            for (int i = 12; i >= 1; i--)
+            {
+                birthMonth.Items.Add(i);
+            }
+
+            for (int i = DateTime.Now.Year - 120; i <= DateTime.Now.Year; i++)
+            {
+                birthYear.Items.Add(i);
+            }
 
             Gender[] genders = (Gender[])Enum.GetValues(typeof(Gender)).Cast<Gender>();
             string[] genderDescriptions = new string[genders.Length];
@@ -57,7 +67,7 @@ namespace HTKTennisklub.GUI.UserControls
                 Address = address.Text,
                 PhoneNumber = phoneNumber.Text,
                 Email = email.Text,
-                BirthDate = birthDate.SelectedDate.GetValueOrDefault(),
+                BirthDate = DateTime.Parse($"{birthYear.Text}-{birthMonth.Text}-{birthDay.Text}"),
                 Gender = EnumDescription.GetValueFromDescription<Gender>(gender.Text),
                 Level = new LevelRepository().GetLevel(level.Text)
             });
